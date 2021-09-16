@@ -1,6 +1,5 @@
 weights = input('Enter weights: ').split()
 capacity = int(input('Enter capacity of bag: '))
-stuffdict = {}
 
 
 def getValues():
@@ -8,13 +7,13 @@ def getValues():
     return value
 
 
-def createMatrix(stuffdict, capacity):
+def createMatrix(capacity):
       value = getValues()
       length = len(value)
       matrix = [[0 for a in range(capacity+1)] for i in range(length+1)]
       for rows in range(length+1):
             for cols in range(capacity+1):
-                  if rows == 0 or cols == 0:
+                  if not rows or not cols:
                         matrix[rows][cols] = 0
                   elif value[rows-1] <= cols:
                         matrix[rows][cols] = max(value[rows-1] + matrix[rows-1][cols-value[rows-1]], matrix[rows-1][cols])
@@ -23,12 +22,12 @@ def createMatrix(stuffdict, capacity):
       return matrix, value
 
 
-def getRes(stuffdict, func, capacity):
-      matrix, area = func(stuffdict, capacity)
+def getRes(func, capacity):
+      matrix, area = func(capacity)
       length = len(area)
       res = matrix[length][capacity]
       return res
 
 
-result = getRes(stuffdict, createMatrix, capacity)
+result = getRes(createMatrix, capacity)
 print('Maximum weight of gold:', result)
