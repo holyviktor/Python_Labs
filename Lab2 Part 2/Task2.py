@@ -6,31 +6,41 @@ class Text:
         self.characters = 0
         self.words = 0
         self.sentences = 0
+
+    def counting_characters(self):
         try:
-            self.file = open('text.txt', encoding='utf-8')
+            file = open('text.txt', "r", encoding='utf-8')
+            data = file.read()
+            self.characters = len(data)
+            file.close()
         except IOError:
-            print("No such file!")
-            exit(1)
+            raise IOError("Failed!")
+        return self.characters
 
-    def counting(self):
-        data = self.file.read()
-        self.characters = len(data)
-        self.sentences = len(re.split('\. |\? |! |\... ', data)) - 1
-        self.words = len(data.split())
-
-    def show_on_console(self):
-        print("Characters: ", self.characters)
-        print("Words: ", self.words)
-        print("Sentences: ", self.sentences)
-
-    def closing(self):
+    def counting_sentences(self):
         try:
-            self.file.close()
+            file = open('text.txt', "r", encoding='utf-8')
+            file.seek(0)
+            data = file.read()
+            self.sentences = len(re.split('\. |\? |! |\... ', data)) - 1
+            file.close()
         except IOError:
-            raise IOError("Failed to close!")
+            raise IOError("Failed!")
+        return self.sentences
+
+    def counting_words(self):
+        try:
+            file = open('text.txt', "r", encoding='utf-8')
+            file.seek(0)
+            data = file.read()
+            self.words = len(data.split())
+            file.close()
+        except IOError:
+            raise IOError("Failed!")
+        return self.words
 
 
 text = Text()
-text.counting()
-text.show_on_console()
-text.closing()
+print("Characters: ", text.counting_characters())
+print("Words: ", text.counting_words())
+print("Sentences: ", text.counting_sentences())

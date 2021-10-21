@@ -3,15 +3,14 @@ import math
 
 class Rational:
 
-    def __init__(self, __numerator=5, __denominator=8):
-        if not isinstance(__numerator, int) or not isinstance(__denominator, int):
+    def __init__(self, numerator=1, denominator=1):
+        if not isinstance(numerator, int) or not isinstance(denominator, int):
             raise TypeError("Wrong type!")
-        elif not __denominator:
+        if not denominator:
             raise ValueError("Wrong value!")
-        else:
-            divider = math.gcd(__numerator, __denominator)
-            self.__numerator = __numerator/divider
-            self.__denominator = __denominator/divider
+        divider = math.gcd(numerator, denominator)
+        self.__numerator = numerator/divider
+        self.__denominator = denominator/divider
 
     def show_fraction(self):
         return str(int(self.__numerator))+"/"+str(int(self.__denominator))
@@ -20,7 +19,7 @@ class Rational:
         return self.__numerator/self.__denominator
 
 
-fraction = Rational(9, 8.6)
+fraction = Rational(4, 8)
 print(fraction.show_fraction())
 print(fraction.show_value())
 
