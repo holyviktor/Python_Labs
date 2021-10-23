@@ -22,7 +22,11 @@ class Text:
             file = open('text.txt', "r", encoding='utf-8')
             file.seek(0)
             data = file.read()
-            self.sentences = len(re.split('\. |\? |! |\... ', data)) - 1
+            count_sent = 0
+            for sentence in re.split('\.|\?|!', data):
+                if re.search('[a-zA-Zа-яА-Я0-9]', sentence):
+                    count_sent += 1
+            self.sentences = count_sent
             file.close()
         except IOError:
             raise IOError("Failed!")
@@ -33,6 +37,8 @@ class Text:
             file = open('text.txt', "r", encoding='utf-8')
             file.seek(0)
             data = file.read()
+            data = re.sub("[^A-Za-zа-яА-Я0-9]", ' ', data)
+            ex = data.split()
             self.words = len(data.split())
             file.close()
         except IOError:

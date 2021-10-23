@@ -28,30 +28,46 @@ class BinaryTree:
         price : int
             price of the product
         """
-        if not isinstance(price, int):
-            raise TypeError("Wrong type of price!")
-        if price <= 0:
-            raise ValueError("Wrong value of price!")
-        if not isinstance(code, int):
-            raise TypeError("Wrong type of code!")
-        if code <= 0:
-            raise ValueError("Wrong value of code!")
         self.left = None
         self.right = None
         self.code = code
         self.price = price
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, price):
+        if not isinstance(price, int):
+            raise TypeError("Wrong type of price!")
+        if price <= 0:
+            raise ValueError("Wrong value of price!")
+        self.__price = price
+
+    @property
+    def code(self):
+        return self.__code
+
+    @code.setter
+    def code(self, code):
+        if not isinstance(code, int):
+            raise TypeError("Wrong type of code!")
+        if code <= 0:
+            raise ValueError("Wrong value of code!")
+        self.__code = code
 
     def insert(self, code, price):
         """inserts new node of the binary tree:
         if code il less than existing insert left, if more insert right"""
         if self.code and self.price:
             if code < self.code:
-                if self.left is None:
+                if not self.left:
                     self.left = BinaryTree(code, price)
                 else:
                     self.left.insert(code, price)
             elif code > self.code:
-                if self.right is None:
+                if not self.right:
                     self.right = BinaryTree(code, price)
                 else:
                     self.right.insert(code, price)
@@ -67,14 +83,14 @@ class BinaryTree:
         returns cost of order
         """
         if code < self.code:
-            if self.left is None:
-                return "Product with code " + str(code) + " doesn't exist"
+            if not self.left:
+                raise ValueError("Doesn't exist!")
             return self.left.find_cost(code, count)
         elif code > self.code:
-            if self.right is None:
-                return "Product with code " + str(code) + " doesn't exist"
+            if not self.right:
+                raise ValueError("Doesn't exist!")
             return self.right.find_cost(code, count)
-        return "Cost of your order is " + str(self.price*count)
+        return self.price*count
 
 
 root = BinaryTree(1, 500)
@@ -86,4 +102,4 @@ codeOfProd = int(input("Enter code of product: "))
 number = int(input("Enter number of products: "))
 if number <= 0:
     raise ValueError("Wrong value of number!")
-print(root.find_cost(codeOfProd, number))
+print("Cost: "+str(root.find_cost(codeOfProd, number)))
