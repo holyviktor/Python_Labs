@@ -1,0 +1,83 @@
+[
+    {
+        "day": "Sunday",
+        "type": "Pepperoni",
+        "ingredients": [
+            "salami",
+            "olives",
+            "mozzarella",
+            "bacon"
+        ],
+        "price": 105
+    },
+    {
+        "day": "Monday",
+        "type": "Americana",
+        "ingredients": [
+            "salami",
+            "ham",
+            "mozzarella",
+            "bacon"
+        ],
+        "price": 110
+    },
+    {
+        "day": "Tuesday",
+        "type": "Spicy",
+        "ingredients": [
+            "salami",
+            "ham",
+            "mozzarella",
+            "bacon",
+            "mushrooms",
+            "pepper",
+            "onion"
+        ],
+        "price": 135
+    },
+    {
+        "day": "Wednesday",
+        "type": "4 cheeses",
+        "ingredients": [
+            "mozzarella",
+            "parmesan",
+            "brie",
+            "ricotta"
+        ],
+        "price": 150
+    },
+    {
+        "day": "Thursday",
+        "type": "Hawaiian",
+        "ingredients": [
+            "chicken",
+            "pineapple",
+            "mozzarella",
+            "souse"
+        ],
+        "price": 105
+    },
+    {
+        "day": "Friday",
+        "type": "4 meats",
+        "ingredients": [
+            "mozzarella",
+            "italian sausage",
+            "pepperoni",
+            "ham",
+            "bacon"
+        ],
+        "price": 140
+    },
+    {
+        "day": "Saturday",
+        "type": "Vegan",
+        "ingredients": [
+            "tomatoes",
+            "pepper",
+            "broccoli",
+            "mushrooms"
+        ],
+        "price": 100
+    }
+]
