@@ -1,8 +1,15 @@
-{
+[{
+  "name": "Python",
+  "code": 1,
   "date" : "01/01/22",
   "price" : 500.0,
-  "regular_tickets" : 1000,
-  "advance_tickets" : 500,
-  "student_tickets" : 100,
-  "late_tickets" : 50
+  "seats" : 100
+},
+{
+  "name": "Java",
+  "code": 2,
+  "date" : "10/02/22",
+  "price" : 400.0,
+  "seats" : 50
 }
+]
