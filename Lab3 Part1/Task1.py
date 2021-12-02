@@ -20,6 +20,8 @@ DAYS_NULL = 0
 PRICE_LATE = 1.1
 PRICE_ADVANCE = 0.4
 PRICE_STUDENT = 0.5
+PurchasedTickets = 'PurchasedTickets.json'
+Event = 'Event.json'
 
 
 class RegularTicket:
@@ -107,10 +109,7 @@ class RegularTicket:
     def date(self, date):
         if not isinstance(date, str):
             raise TypeError("Date must be str!")
-        try:
-            datetime.strptime(date, "%m/%d/%y")
-        except ValueError:
-            raise ValueError("Wrong date!")
+        datetime.strptime(date, "%m/%d/%y")
         self.__date = date
 
     def get_price(self):
@@ -126,7 +125,7 @@ class RegularTicket:
 
     def add(self):
         """adds ticket to file"""
-        with open("PurchasedTickets.json") as infile:
+        with open(PurchasedTickets) as infile:
             bought_tickets = json.load(infile)
         for bought in bought_tickets:
             if self.number == bought["number"]:
@@ -265,7 +264,7 @@ def find_event(name):
     :param name: name of event
     :return: found event
     """
-    with open('Event.json') as file_event:
+    with open(Event) as file_event:
         all_event = json.load(file_event)
     name_event = None
     for event in all_event:
@@ -282,7 +281,7 @@ def get_by_number(number):
     :param number: number of ticket to find
     :return: ticket by number
     """
-    with open('PurchasedTickets.json') as file_tickets:
+    with open(PurchasedTickets) as file_tickets:
         purchased_tickets = json.load(file_tickets)
     name_ticket = None
     for ticket in purchased_tickets:
