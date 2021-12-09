@@ -1,0 +1,12 @@
+[
+  {
+    "type": "OffsiteCourse",
+    "name": "Python",
+    "program": ["OOP"]
+  },
+  {
+    "type": "LocalCourse",
+    "name": "Java",
+    "program": ["OOP"]
+  }
+]
