@@ -26,13 +26,14 @@ def add(teacher, course):
 def main():
     factory = CourseFactory()
     teacher1 = factory.teacher_factory("Ivanov Ivan")
-    course = factory.course_factory("Python")
+    course1 = factory.course_factory("Python")
     course2 = factory.course_factory("Java")
-    add(teacher1, course)
+    add(teacher1, course1)
     add(teacher1, course2)
-    print(teacher1)
-    for t in teacher1:
-        print(t)
+    for teacher in teacher1:
+        print(teacher)
+    for course in course2:
+        print(course)
 
 
 if __name__ == '__main__':

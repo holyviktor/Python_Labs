@@ -2,6 +2,7 @@ import json
 
 from jsonschema import validate
 
+from Classes.course_iterator import CoursesIterator
 from Classes.teacher import Teacher
 from Constants import COURSE_FILE, COURSE_SCHEMA_FILE
 from Interfaces.ICourse import ICourse
@@ -70,4 +71,8 @@ class Course(ICourse):
         with open(COURSE_FILE, "w") as file_course_to_json:
             json.dump(courses, file_course_to_json, indent=4)
         self.teacher.append(teach)
+
+    def __iter__(self):
+        return CoursesIterator(self.teacher)
+
 
