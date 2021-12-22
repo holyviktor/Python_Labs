@@ -1,0 +1,13 @@
+[
+    {
+        "name": "Ivanov Ivan",
+        "course": [
+            "Python",
+            "Java"
+        ]
+    },
+    {
+        "name": "Petrov Petro",
+        "course": []
+    }
+]

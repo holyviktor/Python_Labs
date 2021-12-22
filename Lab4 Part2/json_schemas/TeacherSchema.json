@@ -1,0 +1,22 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/product.schema.json",
+    "title": "The teacher schema",
+    "description": "Teachers from software academy.",
+    "type": "array",
+    "default": [],
+    "properties": {
+        "name": {
+            "description": "Name of the teacher",
+            "type": "string"
+        },
+        "course": {
+            "description": "Courses of the teacher",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": ["name", "course"]
+}
